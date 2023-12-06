@@ -8,7 +8,8 @@
 #include "joystick.hpp"
 #include "display.hpp"
 
-typedef struct {
+typedef struct
+{
     uint8_t timesCompleted;
     uint16_t timeBuffer;
     uint16_t pauseBuffer;
@@ -17,7 +18,8 @@ typedef struct {
     bool isFinished;
 } Timer;
 
-class Board {
+class Board
+{
 private:
     Button *button;
     Buzzer *buzzer;
@@ -34,7 +36,8 @@ public:
         uint8_t ledRingPin, uint8_t ledRingBulbs);
 
     /* Button methods */
-    ButtonType checkButtonType();
+    void updateButtonState();
+    ButtonType getButtonState();
 
     /* LED Ring methods */
     void solidLedRing(const uint32_t &color);
@@ -55,6 +58,9 @@ public:
     void startTimer();
     void pauseTimer();
     uint8_t checkTimer();
+
+    /* Reset Method */
+    void reboot();
 
     ~Board();
 };
