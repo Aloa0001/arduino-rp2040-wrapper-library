@@ -1,6 +1,5 @@
 #include "board.hpp"
-
-void (*resetFunc)(void) = 0;
+#include "pico/bootrom.h"
 
 Board::Board(
     uint8_t buttonPin, uint8_t buttonLedPin,
@@ -143,7 +142,8 @@ uint8_t Board::checkTimer()
 
 void Board::reboot()
 {
-    resetFunc();
+    // reset_usb_boot(1 << digitalPinToPinName(LED_BUILTIN), 0);
+    _ontouch1200bps_();
 }
 
 Board::~Board()

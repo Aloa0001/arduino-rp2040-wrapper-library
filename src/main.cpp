@@ -3,8 +3,7 @@
 #include <SPI.h>
 
 #include "board.hpp"
-// #include "network.hpp"
-#include "pico/bootrom.h"
+#include "network.hpp"
 
 #define BTNLED_PIN 2    // D2
 #define BUTTON_PIN 3    //  D2
@@ -70,10 +69,7 @@ void loop()
   }
   else if (buttonState == ButtonType::RESET)
   {
-    // reboot the board
-    // board->reboot();
-    // reset_usb_boot(1 << digitalPinToPinName(LED_BUILTIN), 0);
-    // _ontouch1200bps_();
+    board->reboot();
   }
 }
 
